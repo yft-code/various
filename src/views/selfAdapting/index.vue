@@ -65,22 +65,6 @@
    <div class="deviceTable">
     <div class="captureLi" v-for="item in arr" :key="item">{{item}}</div>
   </div>
-  <!-- 带有背景图片的，将背景图片均分 -->
-  <div class="info-bg">
-         <img src="../../assets/img/left-top.svg" class="info-bg-inner">
-         <div class="info-message">
-          <div class="parent-img">
-          <div class="child-img" v-for="(item, index) in 4" :key="index">
-           <div :class="[`variety-head-child-${index}`]">
-              <!-- <img class="info-img" :src="index === varietyIndex ? item.activeIcon: item.icon"> -->
-              <span  class="variety-title">{{ item}}</span>
-              <!-- <dv-digital-flop :config="item.config"  class="flop-right"></dv-digital-flop> -->
-           </div>
-           
-    </div>
-  </div>
-         </div>
-        </div>
   </div>
 </template>
 <script>
@@ -99,42 +83,6 @@ methods:{
 }
 </script>
  <style>
-  .info-bg {
-   /* flex: 1.1; */
-  width: 100%;
-  background-color: blue;
-  height: 300px;
-  /* margin-bottom:20px; */
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  position: relative;
-  }
-  .info-bg-inner{
-    width: 100%;
-  }
-  .info-message{
-      position: absolute;
-      top:0%;
-      height: 100%;
-      width: 100%;
-  }
-  .parent-img {
-     width: 100%;
-     height:100%;
-     display: flex;
-     flex-flow: row wrap;
-     align-items: center;
-     justify-content: center;
-   }
-   .child-img {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-     box-sizing: border-box;
-     flex: 50%;
-     height: 50%;
-   }
    .parent {
      width: 100%;
      height: 150px;
@@ -149,7 +97,6 @@ methods:{
      height: 50px;
      border: 1px solid red;
    }
-
    .card_wrap {
 color: red;
   display: flex;
