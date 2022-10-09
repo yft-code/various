@@ -9,10 +9,14 @@
 <script>
 export default {
    methods:{
+    chanageParms(){
+      this.$store.commit('changeCountParams','30')
+     },
       getAdd(){
         console.log('哈哈哈');
         this.$store.commit('changeCount')
       },
+    
       getPayLoad(){
         // way1:
         // this.$store.commit('changeCountPayload',{count:80})
@@ -21,7 +25,8 @@ export default {
         type: 'changeCountPayload',
         count:10,
        })
-      }
+      },
+
    }
 }
 </script>
