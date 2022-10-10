@@ -4,6 +4,9 @@ import router from './router'
 import store from './store'
 Vue.config.productionTip = false
 import Vuex from 'vuex';
+import $ from 'jquery';
+window.jQuery = $;
+window.$ = $;
 // 引入el-ui
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
