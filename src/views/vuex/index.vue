@@ -358,6 +358,7 @@
         </div>
       </div>
       <div id="video" class="video"></div>
+      <div @click="uploadDown">下载视频</div>
     </div>
   </div>
   </div>
@@ -390,9 +391,9 @@ import{ Base, getZoomScale,ajaxGetRequest,sendMes,closeWebSocket,reconnect,init,
       return Number(version.split('.').join(''));
       },
       createApp(){
-     let versionInfo; // 版本信息
+      let versionInfo; // 版本信息
       Base.createApplication().then((res) => {
-    if (res.errorCode === 0) {
+     if (res.errorCode === 0) {
      this.application = res.application;
       console.log('application初始化',this.application);
       this.appInfo.appId = res.body.appId;
@@ -458,11 +459,11 @@ showVideo(type) {
           alert(res.errorMsg);
         }
       });
-      // $('.tab>li').removeClass('active');
-      // $('.playTab').addClass('active');
-      // $('.tabContent>div').removeClass('showContent');
-      // $('.playWraper').addClass('showContent');
-      this.appInfo.videoList.push({
+      $('.tab>li').removeClass('active');
+      $('.playTab').addClass('active');
+      $('.tabContent>div').removeClass('showContent');
+      $('.playWraper').addClass('showContent');
+     this.appInfo.videoList.push({
         type: type,
         windowId: res.body.windowId,
         layout: "11", // 默认1x1布局
@@ -472,13 +473,36 @@ showVideo(type) {
         ratioMode: 'FULL',// 视频比例
         playType: '0' // 类型
       });
-      // $('#layout').val("11"); // 默认1x1布局
-      // $("#speed").val(1); // 回放倍率默认1
-      // $('#ratioMode').val("FULL"); // 视频比例默认铺满
-      // $('#playType').val("0"); // 类型默认MP
+      $('#layout').val("11"); // 默认1x1布局
+      $("#speed").val(1); // 回放倍率默认1
+      $('#ratioMode').val("FULL"); // 视频比例默认铺满
+      $('#playType').val("0"); // 类型默认MP
       this.appInfo.curWinId = res.body.windowId;
       sessionStorage.setItem('curWinId', this.appInfo.curWinId);
       sessionStorage.setItem('videoList', JSON.stringify(this.appInfo.videoList));
+      $('.videoList section').removeClass('activeWindow');
+      if (type === 'LIVE_VIDEO_PURE') {
+        $('.videoList').append(`<section class="activeWindow"><span>实况</span><i data-name=${this.appInfo.curWinId} class="close">X</i></section>`);
+        $('.threeTab').text('语音功能');
+        $('.downLoadTab').hide();
+        $('.channelIdParam').hide();
+        $('.voiceOptionParam').show();
+        if ($('#playType').val() === '2') {  // P2P类型
+          $('.channelIdParam').show();
+        }
+      } else if (type === 'REPLAY_PURE') {
+        $('.videoList').append(`<section class="activeWindow"><span>录像回放</span><i data-name=${this.appInfo.curWinId} class="close">X</i></section>`);
+        $('.threeTab').text('录像控制');
+        $('.downLoadTab').show();
+        $('.voiceOptionParam').hide();
+        if ($('#playType').val() === '2') { // P2P类型
+          $('.channelIdParam').show();
+        } else {
+          $('.channelIdParam').hide();
+        }
+      }
+      $('.videoItem').hide();
+      $('.videoContent').show();
       const rect = this.application.getLocationInfo('video');
       const windowInfo = {
         'windowId': this.appInfo.curWinId,
@@ -503,7 +527,7 @@ showVideo(type) {
     }
   });
 },
-      // 实现下载
+// 实现下载
   uploadDown(){
         // 启动下载
   const args = {
@@ -525,26 +549,15 @@ showVideo(type) {
   let windowId='df339dc7f5b348a4a1155c76ac7f0ca9'
   let command='START_DOWNLOAD'
   console.log('application下载',this.application);
-  this.application.sendAction(windowId, command, args).then((res) => {
-    console.log('res======',res);
+  this.application.sendAction(this.appInfo.curWinId, 'START_DOWNLOAD', args).then((res) => {
     if (res.errorCode !== 0) {
-      alert(res.errorMsg);
+      // showAlert(res.errorMsg);
     }
-    alert('下载句柄：' + res.body.downloadHandle);
+    console.log('下载句柄：' + res.body.downloadHandle);
   });
       },
     }
  }
- $('.videoBox').on('click', (e) => {
-  if (e.target.dataset.item === "LIVE_VIDEO_PURE") {
-    // showVideo('LIVE_VIDEO_PURE');
-    console.log('3434324234');
-  }
-  if (e.target.dataset.item === "REPLAY_PURE") {
-    // showVideo('REPLAY_PURE');
-    console.log('fdjgfdsgfd');
-  }
-});
 </script>
 
 <style>
