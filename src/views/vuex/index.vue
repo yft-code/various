@@ -3,12 +3,11 @@
       <el-button @click="createApp">开始启动</el-button>
       <el-button @click="getHistory">获取历史记录</el-button>
       <el-button @click="uploadDown">下载</el-button>
-     
-      <span>下载句柄：</span>
+      <span>下载句柄:</span>
       <input type="text" id="downloadHandle" value="">
       <div @click="getUploadMeg">获取下载信息</div>
       <div class="info"></div>
-       <div id="video" class="video">
+       <div id="video" style="height:0;width:0" class="video">
       </div>
     </div>
 </template>
@@ -28,8 +27,8 @@ import{ Base, getZoomScale,ajaxGetRequest,sendMes,closeWebSocket,reconnect,init,
    }
   }
   },
-    methods:{
-      getUploadMeg(){
+methods:{
+ getUploadMeg(){
 // 获取下载信息
   const args = {
     'downloadHandle': $('#downloadHandle').val()
@@ -60,7 +59,7 @@ import{ Base, getZoomScale,ajaxGetRequest,sendMes,closeWebSocket,reconnect,init,
         <div>已下载时间：${res.body.recordTime}s；</div>`)
     console.log('res.body',JSON.stringify(res.body));
   });
-      },
+},
       getHistory(){
         console.log('获取历史记录零零零零');
          this.showVideo('REPLAY_PURE');
@@ -117,33 +116,34 @@ import{ Base, getZoomScale,ajaxGetRequest,sendMes,closeWebSocket,reconnect,init,
 },
 
 showVideo(type) {
-  if (this.appInfo.videoList.length > 15) {
-    return alert('最多打开16个窗口')
-  }
+  // if (this.appInfo.videoList.length > 15) {
+  //   return alert('最多打开16个窗口')
+  // }
   this.windowType = type;
-  const rect = this.application.getLocationInfo('video');
+  // const rect = this.application.getLocationInfo('video');
   const windowInfo = {
     'pluginType': type,
     'rect': {
-      'left': rect.left,
-      'top': rect.top,
-      'width': rect.width,
-      'height': rect.height
+      'left': -1000,
+      'top': -1000,
+      'width': 0,
+      'height': 0
     },
     'title': document.title
   }
+  console.log(' windowInfo', windowInfo);
   this.application.createWindow(windowInfo).then((res) => {
     if (res.errorCode === 0) {
-      const windowStyle = {
-        'loadingGifUrl': "http://image.huawei.com/tiny-lts/v1/images/f395ed1b5d01d3a57c5c56eedd44eb5f_600x600.gif@900-0-90-f.gif",
-        'loadingText': "测试...加载中...",
-        'videoLoadingText': "测试...视频加载中..."
-      }
-      this.application.setWindowStyle(windowStyle).then(res => {
-        if (res.errorCode !== 0) {
-          alert(res.errorMsg);
-        }
-      });
+      // const windowStyle = {
+      //   'loadingGifUrl': "",
+      //   'loadingText': "",
+      //   'videoLoadingText': ""
+      // }
+      // this.application.setWindowStyle(windowStyle).then(res => {
+      //   if (res.errorCode !== 0) {
+      //     alert(res.errorMsg);
+      //   }
+      // });
       // $('.tab>li').removeClass('active');
       // $('.playTab').addClass('active');
       // $('.tabContent>div').removeClass('showContent');
@@ -166,47 +166,47 @@ showVideo(type) {
       sessionStorage.setItem('curWinId', this.appInfo.curWinId);
       sessionStorage.setItem('videoList', JSON.stringify(this.appInfo.videoList));
       // $('.videoList section').removeClass('activeWindow');
-      if (type === 'LIVE_VIDEO_PURE') {
-        $('.videoList').append(`<section class="activeWindow"><span>实况</span><i data-name=${this.appInfo.curWinId} class="close">X</i></section>`);
-        $('.threeTab').text('语音功能');
-        $('.downLoadTab').hide();
-        $('.channelIdParam').hide();
-        $('.voiceOptionParam').show();
-        if ($('#playType').val() === '2') {  // P2P类型
-          $('.channelIdParam').show();
-        }
-      } else if (type === 'REPLAY_PURE') {
-        $('.videoList').append(`<section class="activeWindow"><span>录像回放</span><i data-name=${this.appInfo.curWinId} class="close">X</i></section>`);
-        $('.threeTab').text('录像控制');
-        $('.downLoadTab').show();
-        $('.voiceOptionParam').hide();
-        if ($('#playType').val() === '2') { // P2P类型
-          $('.channelIdParam').show();
-        } else {
-          $('.channelIdParam').hide();
-        }
-      }
-      $('.videoItem').hide();
-      $('.videoContent').show();
+      // if (type === 'LIVE_VIDEO_PURE') {
+      //   $('.videoList').append(`<section class="activeWindow"><span>实况</span><i data-name=${this.appInfo.curWinId} class="close">X</i></section>`);
+      //   $('.threeTab').text('语音功能');
+      //   $('.downLoadTab').hide();
+      //   $('.channelIdParam').hide();
+      //   $('.voiceOptionParam').show();
+      //   if ($('#playType').val() === '2') {  // P2P类型
+      //     $('.channelIdParam').show();
+      //   }
+      // } else if (type === 'REPLAY_PURE') {
+      //   $('.videoList').append(`<section class="activeWindow"><span>录像回放</span><i data-name=${this.appInfo.curWinId} class="close">X</i></section>`);
+      //   $('.threeTab').text('录像控制');
+      //   $('.downLoadTab').show();
+      //   $('.voiceOptionParam').hide();
+      //   if ($('#playType').val() === '2') { // P2P类型
+      //     $('.channelIdParam').show();
+      //   } else {
+      //     $('.channelIdParam').hide();
+      //   }
+      // }
+      // $('.videoItem').hide();
+      // $('.videoContent').show();
       const rect = this.application.getLocationInfo('video');
-      const windowInfo = {
-        'windowId': this.appInfo.curWinId,
-        'left': rect.left,
-        'top': rect.top,
-        'width': rect.width,
-        'height': rect.height,
-        'title': document.title
-      }
-      this.application.setWindowRect(windowInfo);
+      // const windowInfo = {
+      //   'windowId': this.appInfo.curWinId,
+      //   'left': rect.left,
+      //   'top': rect.top,
+      //   'width': rect.width,
+      //   'height': rect.height,
+      //   'title': document.title
+      // }
+      // this.application.setWindowRect(windowInfo);
       // 绑定窗口信息
-      this.application.bindWindow('video', this.appInfo.curWinId);
-      this.application.showWindow(this.appInfo.curWinId).then((res) => {
-        if (res.errorCode === 0) {
-          this.application.setWindowTop(this.appInfo.curWinId, true); // 窗口置顶
-        } else {
-          alert(res.errorMsg);
-        }
-      });
+      // this.application.bindWindow('video', this.appInfo.curWinId);
+      // this.application.showWindow(this.appInfo.curWinId).then((res) => {
+      //   if (res.errorCode === 0) {
+      //     this.application.setWindowTop(this.appInfo.curWinId, true); // 窗口置顶
+      //   } else {
+      //     alert(res.errorMsg);
+      //   }
+      // });
     } else {
       alert(res.errorMsg);
     }
