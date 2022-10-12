@@ -12,5 +12,8 @@ const routes=[{
 const router=new VueRouter({
     routes
 })
-
+// 全局导航守卫
+router.beforeEach((to,from,next)=>{
+    next()
+})
 export default router

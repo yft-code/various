@@ -1,6 +1,6 @@
 <template>
   <div  style="width:100%;height:20px;background:red" @click="test">
-
+      
   </div>
 </template>
 

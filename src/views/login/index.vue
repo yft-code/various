@@ -1,8 +1,9 @@
 <template>
   <div>
-    7777
+    登录
   </div>
 </template>
+
 <script>
 export default {
 
