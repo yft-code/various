@@ -1,8 +1,8 @@
-const children=[{
+const children=[
+    {
     path: "/",
     name: "cities",
     meta: { title: '首页', icon: '' },
-   
     component: resolve => require(["@/views/cities/index.vue"], resolve)
 },
 {   path:'webscoket',

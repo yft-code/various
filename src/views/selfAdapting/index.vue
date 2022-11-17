@@ -135,7 +135,7 @@ color: red;
 }
 .captureLi {
 background-color: blue;
-  width: calc(100% / 3);
-  /* padding: 12px 12px; */
+  width: calc((100% - 10px)/3);
+  /* padding: 12px  12px; */
 }
  </style>

@@ -4,16 +4,17 @@
         <h2>获取各级省市名称</h2>
          <p>npm install element-china-area-data -S</p>
          <p></p>
-          <el-select v-model="value1" multiple placeholder="请选择">
+
+       <el-select v-model="value1" multiple placeholder="请选择">
     <el-option
       v-for="item in provinceAndCityData"
       :key="item.value"
       :label="item.label"
       :value="item.value">
     </el-option>
-  </el-select>
+       </el-select>
 
-  <el-select
+       <el-select
     v-model="value2"
     multiple
     collapse-tags
@@ -25,7 +26,8 @@
       :label="item.label"
       :value="item.label">
     </el-option>
-  </el-select>
+       </el-select>
+
   </div>
 </div>
 </template>

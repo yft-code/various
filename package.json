@@ -10,7 +10,9 @@
   "dependencies": {
     "axios": "^0.27.2",
     "core-js": "^3.6.5",
+    "echarts": "^5.4.0",
     "element-china-area-data": "^5.0.2",
+    "element-resize-detector": "^1.2.4",
     "element-ui": "^2.15.1",
     "flv.js": "^1.6.2",
     "konva": "^8.3.10",
@@ -46,12 +48,12 @@
     },
     "rules": {
       "generator-star-spacing": "off",
-      "no-tabs":"off",
-      "no-unused-vars":"off",
-      "no-console":"off",
-      "no-irregular-whitespace":"off",
+      "no-tabs": "off",
+      "no-unused-vars": "off",
+      "no-console": "off",
+      "no-irregular-whitespace": "off",
       "no-debugger": "off"
-  }
+    }
   },
   "browserslist": [
     "> 1%",
