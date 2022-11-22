@@ -65,6 +65,39 @@ const children=[
     meta: { title: '登录', icon: '' },
     component: resolve => require(["@/views/login/index.vue"], resolve)
 },
+{   path:'es6',
+    name: "es6",
+    meta: { title: 'es6', icon: '' },
+    component: resolve => require(["@/views/es6/index.vue"], resolve),
+    children:[
+        {
+        path:'arrow',
+        name: "arrow",
+        meta: { title: '箭头函数', icon: '' },
+        component: resolve => require(["@/views/es6/arrow.vue"], resolve),
+        },
+        {
+            path:'arr',
+            name: "arr",
+            meta: { title: '数组的扩展', icon: '' },
+            component: resolve => require(["@/views/es6/arr.vue"], resolve),
+            },
+            {
+                path:'unicode',
+                name:'unicode',
+                meta: { title: 'unicode', icon: '' },
+                component: resolve => require(["@/views/es6/unicode.vue"], resolve),
+            },
+            {
+                path:'func',
+                name:'func',
+                meta: { title: '函数', icon: '' },
+                component: resolve => require(["@/views/es6/function.vue"], resolve),
+            }
+
+
+]
+},
 {   path:'detail',
     name: "detail",
     // 要去那个路由就对哪个路由做判断，路由独享的守卫
