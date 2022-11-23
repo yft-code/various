@@ -343,12 +343,9 @@ export default {
           if(index===299){
         this.loading=false
       }
+      console.log('flag',this.flag);
         this.getNewtype(index)
       }
-      setTimeout(()=>{
-        this.flag=false
-      })
-      console.log('this.timeRangeListIndex',this.timeRangeListIndex);
       return this.timeRangeListIndex.indexOf(index) > -1 ? 'hours-item-left selected' : 'hours-item-left';
     },
     getNewtype(index){
@@ -356,7 +353,8 @@ export default {
        64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 
        84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99
       ]
-        return this.timeRangeListIndex.indexOf(index) > -1 ? 'hours-item-left selected' : 'hours-item-left';
+      this.flag=false
+      
     },
     compItem (item) {
       // 不足10前面补0
