@@ -1,11 +1,15 @@
 <!--
  * @FileDescription:轴选择器：对有所帮助的朋友点个关注再走呀！！！！
- * @Author: -----------
+ * @Author:-----------
  * @LastEditors: ---------
 -->
+
 <template>
-  <div style="margin-bottom: 50px;">
+  <div style="width:100%;border: 1px solid yellow;height:600px" v-load="loading">
+    <el-button v-if="show" @click="isShow">显示数据</el-button>
+    <div v-if="!show" style="margin-bottom: 50px;">
     <div class="hours-container">
+      <div>星期一</div>
       <div v-for="(item, index) in hours"
            :key="index"
            class="hours-item">
@@ -63,6 +67,8 @@
             :key="index">{{ items }}，</span>
     </div>
  
+    </div>
+{{loading}}
   </div>
 </template>
  
@@ -126,7 +132,9 @@ export default {
   },
   data () {
     return {
-      flag:true,
+      loading:true,
+      show:true,
+      flag:false,
       hours: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
       timeHours: ['00:00', '01:00', '02:00', '03:00', '04:00', '05:00', '06:00', '07:00', '08:00', '09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00', '21:00', '22:00', '23:00', '24:00'],// 选项
       selectStart: false,// 开始
@@ -143,6 +151,15 @@ export default {
     }
   },
   methods: {
+    isShow(){
+      this.show=false
+      // this.flag=true
+      this.loading=true
+      console.log('loading',this.loading);
+      setTimeout(()=>{
+           this.flag=true
+      })
+    },
     // 时间区间转换成下标区间
     transformedIndex () {
       console.log('选中的区间');
@@ -305,27 +322,11 @@ export default {
         }
       }
     },
-    getCompClass (index) {
-      // console.log('startIndex',index);
-      // if (index === this.startIndex) {
-      //   return 'hours-item-left preSelected';
-      // }
-      // if (index >= this.startIndex) {
-      //   if (this.tempRangeIndex.indexOf(index) > -1) {
-      //     return 'hours-item-left preSelected';
-      //   }
-      // } else {
-      //   if (this.tempRangeIndex.indexOf(index) > -1) {
-      //     return 'hours-item-left unSelected';
-      //   }
-      // }
-      let timeRangeListIndex=[0,1,2,3,4,5,6,7,8,9,10,11]
-     
-    },
+  
     // 是否选中，计算className
     compClass (index) {
+    
       console.log('index',index);
-      console.log('startIndex',this.startIndex);
       if (index === this.startIndex) {
         return 'hours-item-left preSelected';
       }
@@ -339,14 +340,23 @@ export default {
         }
       }
       if(this.flag){
-        this.timeRangeListIndex=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114]
-
+          if(index===299){
+        this.loading=false
+      }
+        this.getNewtype(index)
       }
       setTimeout(()=>{
         this.flag=false
       })
       console.log('this.timeRangeListIndex',this.timeRangeListIndex);
       return this.timeRangeListIndex.indexOf(index) > -1 ? 'hours-item-left selected' : 'hours-item-left';
+    },
+    getNewtype(index){
+      this.timeRangeListIndex=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63,
+       64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 
+       84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99
+      ]
+        return this.timeRangeListIndex.indexOf(index) > -1 ? 'hours-item-left selected' : 'hours-item-left';
     },
     compItem (item) {
       // 不足10前面补0
