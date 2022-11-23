@@ -111,11 +111,22 @@ export default {
   computed: {
   },
   created(){
-      this.handleClick (0)
-      this.compClass (297)
+       
+      //  if(this.flag){
+      //  this.compClass (19)
+      //   setTimeout(()=>{
+      //     this.flag=false
+      //   })
+      //  }
+        
+    // this.timeRangeListIndex=[0,1,2,3,4,5,6,7,8,9,10,11]
+    //   console.log('this.timeRangeListIndex',this.timeRangeListIndex);
+    //   return this.timeRangeListIndex.indexOf(index) > -1 ? 'hours-item-left selected' : 'hours-item-left';
+   
   },
   data () {
     return {
+      flag:true,
       hours: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
       timeHours: ['00:00', '01:00', '02:00', '03:00', '04:00', '05:00', '06:00', '07:00', '08:00', '09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00', '21:00', '22:00', '23:00', '24:00'],// 选项
       selectStart: false,// 开始
@@ -294,9 +305,27 @@ export default {
         }
       }
     },
+    getCompClass (index) {
+      // console.log('startIndex',index);
+      // if (index === this.startIndex) {
+      //   return 'hours-item-left preSelected';
+      // }
+      // if (index >= this.startIndex) {
+      //   if (this.tempRangeIndex.indexOf(index) > -1) {
+      //     return 'hours-item-left preSelected';
+      //   }
+      // } else {
+      //   if (this.tempRangeIndex.indexOf(index) > -1) {
+      //     return 'hours-item-left unSelected';
+      //   }
+      // }
+      let timeRangeListIndex=[0,1,2,3,4,5,6,7,8,9,10,11]
+     
+    },
     // 是否选中，计算className
     compClass (index) {
-      console.log('startIndex',index);
+      console.log('index',index);
+      console.log('startIndex',this.startIndex);
       if (index === this.startIndex) {
         return 'hours-item-left preSelected';
       }
@@ -309,6 +338,14 @@ export default {
           return 'hours-item-left unSelected';
         }
       }
+      if(this.flag){
+        this.timeRangeListIndex=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114]
+
+      }
+      setTimeout(()=>{
+        this.flag=false
+      })
+      console.log('this.timeRangeListIndex',this.timeRangeListIndex);
       return this.timeRangeListIndex.indexOf(index) > -1 ? 'hours-item-left selected' : 'hours-item-left';
     },
     compItem (item) {
@@ -384,6 +421,7 @@ export default {
         }
       }
     }
+    // 已选中的颜色
     .selected {
       background-color: rgba(0, 87, 255, 0.4);
       border-bottom: 1px solid #ccc;
