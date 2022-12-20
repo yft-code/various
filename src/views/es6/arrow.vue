@@ -4,12 +4,16 @@
       <div class="calendar">
         <table class="calendar-table" style="width:610px">
           <thead class="calendar-head">
+            <!-- tr：便是行，每一个tr表示一行，td或th列,表示一行有几列 -->
             <tr>
+              <!-- row行 -->
+              <!-- col是垂直合并 -->
               <th rowspan="6" class="week-td">星期/时间</th>
               <th colspan="24">00:00 - 12:00</th>
               <th colspan="24">12:00 - 24:00</th>
             </tr>
             <tr>
+              <!-- colspan="2"合并单元格,两个和为一个  -->
               <td colspan="2" v-for="(item,index) in tableHeader" :key="index">{{item}}</td>
             </tr>
           </thead>
@@ -27,7 +31,7 @@
                 :class="item.class"
                 v-for="(item,i) in rowUnit[0]"
                 :key="i"
-              ></td>
+              >1</td>
             </tr>
             <tr>
               <td>星期二</td>
@@ -95,7 +99,6 @@
                 :key="i"
               ></td>
             </tr>
-  
             <tr>
               <td colspan="49" class="td-table-tip">
                 <div class="clearfix">
@@ -131,7 +134,7 @@
               zIndex:-1}"
       ></div>
       <div>{{timeStr}}</div>
-      <div>{{timeSection}}</div>
+      <div style="background;:#31676f;width:100px">123</div>
     </div>
   </template>
   
@@ -239,7 +242,7 @@
         }
       }
     },
-    // 添加时调用
+    // 初始化数据调用
       init() {
         for (let i = 0; i < 7; i++) {
           let arr = [];
@@ -247,24 +250,28 @@
             arr.push({ class: null, timeData: j });
           }
           this.rowUnit.push(arr);
-          console.log('this.rowUnit',this.rowUnit);
           this.timeContent.push({ arr: [] });
           this.timeSection.push([]);
           this.timeStr.push("");
         }
       },
+      // 数据按下获取开始的按下的格子数,以及获取天数
       handleMouseDown(i, day) {
         console.log('i',i);
         this.downEvent = true; //按下时鼠标不在范围内则不算
         this.beginDay = day;
         this.beginTime = i;
       },
+
+      // 鼠标按下时间
       dian(event) {
         console.log('event',event);
         // console.log(event);
         this.px = event.pageX; //获取x坐标
         this.py = event.pageY;
       },
+
+      // 鼠标经过事件
       yi(event) {
         if (this.px == "" || this.py == "") {
           return;
@@ -303,6 +310,7 @@
           this.h = 0 - this.h;
         }
       },
+
       li() {
         this.px = "";
         this.py = "";
@@ -313,6 +321,7 @@
         this.len = 0;
         this.back = "";
       },
+      // 松开鼠标事件,获取结尾的时间
       handleMouseUp(i, day) {
         let _this = this;
         let begin = this.beginTime;
@@ -328,6 +337,8 @@
         function isAdd() {
           for (let x = dayStart; x < dayEnd + 1; x++) {
             for (let y = start; y < end + 1; y++) {
+              // _this.rowUnit[x]为一个数据
+              console.log('_this.rowUnit',_this.rowUnit[x][y]);
               if (_this.rowUnit[x][y].class == null) return true;
             }
           }
@@ -370,6 +381,7 @@
         }
         this.downEvent = false;
       },
+      // 编辑回显的
       filterTime(start, end) {
         //选中的x,y坐标信息 x:0-47  y:0-6
         function sortCut(arr) {
@@ -431,6 +443,7 @@
         }
         // console.log(this.timeSection)
       },
+      // 情况数据的
       clear() {
         this.rowUnit.forEach(item => {
           item.forEach(item1 => {

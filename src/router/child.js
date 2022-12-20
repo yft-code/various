@@ -40,6 +40,25 @@ const children=[
     meta: { title: '自适应', icon: '' },
     component: resolve => require(["@/views/selfAdapting/index.vue"], resolve)
 },
+{   path:'downLoad',
+    name:"downLoad",
+    meta: { title: '下载', icon: '' },
+    component: resolve => require(["@/views/download/index.vue"], resolve),
+    children:[
+        {
+            path:'zip',
+            name:"zip",
+            meta: { title: '下载', icon: '' },
+            component: resolve => require(["@/views/download/zip.vue"], resolve), 
+        },
+        {
+            path:'bigfile',
+            name:"bigfile",
+            meta: { title: '大文件下载', icon: '' },
+            component: resolve => require(["@/views/download/bigfile.vue"], resolve), 
+        }
+    ]
+},
 {   path:'router',
     name:"router",
     meta: { title: '路由', icon: '' },
@@ -98,23 +117,29 @@ const children=[
 
 ]
 },
-{   path:'detail',
+{
+    path:'detail',
     name: "detail",
-    // 要去那个路由就对哪个路由做判断，路由独享的守卫
-    // beforeEnter: (to, from,next) => {
-    //     // 符合的就next()这个是跳转到当前路由，
-    //     // next('/login'),跳转到登录页
-    //     // if(1>3){
-    //     //     next()
-    //     // }
-       
-    //     console.log('to',to,from,next);
-    //     // reject the navigation
-    //     return false
-    //   },
     meta: { title: '详情页面', icon: '' },
     component: resolve => require(["@/views/detail/index.vue"], resolve)
 },
+// {   path:'detail',
+//     name: "detail",
+//     // 要去那个路由就对哪个路由做判断，路由独享的守卫
+//     // beforeEnter: (to, from,next) => {
+//     //     // 符合的就next()这个是跳转到当前路由，
+//     //     // next('/login'),跳转到登录页
+//     //     // if(1>3){
+//     //     //     next()
+//     //     // }
+       
+//     //     console.log('to',to,from,next);
+//     //     // reject the navigation
+//     //     return false
+//     //   },
+//     meta: { title: '详情页面', icon: '' },
+//     component: resolve => require(["@/views/detail/index.vue"], resolve)
+// },
 ]
 export const child = {
     children 
