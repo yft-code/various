@@ -470,7 +470,58 @@ export default {
     },
     methods: {
         add(){
-
+          this.timeForm.forms.push({
+            labelName: "星期一",
+            startValue: "",
+            endValue: "",
+            disabled: false,
+            //  校验规则
+            startRule: {
+              // ElementUI 表单校验规则的语法
+              validator: (rule, value, callback) => {
+                console.log("vaues", value);
+                if (value == "") {
+                  console.log("时间不能为空");
+                } else if (
+                  this.compareTime(
+                    this.timeForm.forms[0].endValue,
+                    this.timeForm.forms[0].startValue
+                  )
+                ) {
+                  //  console.log('初期小于起始');
+                  callback(new Error("初始时间要小于结束时间"));
+                  this.$message.error("初始时间要小于结束时间");
+                  this.timeForm.forms[0].startValue = "";
+                } else {
+                  callback();
+                }
+              },
+              trigger: "change",
+            },
+            // 规则必须也得定义在form绑定的model中
+            endRule: {
+              // ElementUI 表单校验规则的语法
+              validator: (rule, value, callback) => {
+                console.log("vaues", value);
+                if (value == "") {
+                  console.log("时间不能为空");
+                } else if (
+                  this.compareTime(
+                    this.timeForm.forms[0].endValue,
+                    this.timeForm.forms[0].startValue
+                  )
+                ) {
+                  //  console.log('初期小于起始');
+                  callback(new Error("初始时间要小于结束时间"));
+                  this.$message.error("初始时间要小于结束时间");
+                  this.timeForm.forms[0].endValue = "";
+                } else {
+                  callback();
+                }
+              },
+              trigger: "change",
+            },
+          },)
         },
          timeSec(time) {
       if (time !== null) {
