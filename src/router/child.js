@@ -40,6 +40,11 @@ const children=[
     meta: { title: '自适应', icon: '' },
     component: resolve => require(["@/views/selfAdapting/index.vue"], resolve)
 },
+{   path:'tree',
+    name:"tree",
+    meta: { title: '数据处理', icon: '' },
+    component: resolve => require(["@/views/tree/index.vue"], resolve)
+},
 {   path:'addMultity',
     name:"addMultity",
     meta: { title: '批量添加', icon: '' },
