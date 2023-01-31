@@ -47,7 +47,6 @@ export default {
     results.push(treeMap)
         console.log('resultscccc',results);
     treeMap.children=[1,2,3,4,5,5]
-
     // =====================
     //树形图根据子节点的id，获取父辈节点 思路
     //1.先深拷贝一份data数据,用于初始循环时数据使用
@@ -790,12 +789,12 @@ export default {
             }
             // 就是将父级的id与自己的pid相等的话。就变成他的孩子
             itemMap[pid].children.push(treeItem)
-                console.log("itemMapsss",this.index++,itemMap);
+                console.log("itemMapsss",this.index++,itemMap);     
               } 
             }
             return result;
         },
-  getNode(arr, id){
+       getNode(arr, id){
   const node = arr.find(i => i.id === id); // 找到当前元素
   node.children = [];
   for(const item of arr) {
@@ -805,7 +804,7 @@ export default {
     }
   }
   return node;
-},
+       },
     // forEach 不能使用return、break等中断循环），不改变原数组，无返回值undefined。
     // map循环的返回值一直为一个数组，不能返回其他的变量
   getChildren(arr, id) {
