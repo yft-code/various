@@ -4,6 +4,8 @@ import router from './router'
 import store from './store'
 Vue.config.productionTip = false
 import Vuex from 'vuex';
+import Plugin from 'v-fit-columns';
+Vue.use(Plugin);
 // import $ from 'jquery';
 // window.jQuery = $;
 // window.$ = $;

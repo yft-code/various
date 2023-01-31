@@ -15,19 +15,25 @@
     <div>
         <el-button type="primary" @click="handle">处理</el-button>
     </div>
+    <div @click="btn">
+        dasdasdsa
+    </div>
     <div id="myDiv"></div>
     </div>
   </div>
 </template>
 
 <script>
+
 export default {
+    
  data(){
     return{
-        index:0,
-    ids:[],
-    defaultCheckedkeys:[],
-    defaultProps: {
+     index:0,
+        // 所有选中的子节点的id
+     ids:[],
+     defaultCheckedkeys:[],
+     defaultProps: {
         children: 'child',
         label: 'value'
       },
@@ -50,8 +56,8 @@ export default {
     // =====================
     //树形图根据子节点的id，获取父辈节点 思路
     //1.先深拷贝一份data数据,用于初始循环时数据使用
-    //2.将选择的id的父辈以及当先选择的checked变为true
-    //3.遍历循环第2步生成的新树，获取自己想要的数据
+    //2.将选择的id的父辈以及当先选择的checked变为true  findParent()
+    //3.遍历循环第2步生成的新树，获取自己想要的数据   handle()
     let data=[
     {
         id: "泸州园区",
@@ -698,6 +704,9 @@ export default {
     console.log('result11111',result)
  },
  methods:{
+    btn(){
+   
+    },
 
      // =================树形图根据子节点的id，获取父辈节点
      // 将选择的id的父辈以及当先选择的checked变为true
@@ -818,7 +827,7 @@ export default {
   console.log('res',res);
   return res;
 },
-    // 递归方法
+    // 2递归方法
     arrToTree1(arr,id){
     const res = [];
     arr.forEach(item=>{

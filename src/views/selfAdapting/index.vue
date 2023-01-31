@@ -20,7 +20,7 @@
           </el-col>
            <el-col
             :xs="24"
-             :sm="24"
+            :sm="24"
             :md="12"
             :lg="6"
             :xl="6"
@@ -81,12 +81,81 @@
 <div class="grid-container">
   <div class="item1" v-for="item in 6" :key="item">{{item}}</div>
 </div>
+<div class="grid-container1">
+  <div style="">
+    <div style="">
+          <el-table style="width:100%"  v-fit-columns :data="tableData" v-loading="loading">
+          <el-table-column prop="index" label="排名">
+          </el-table-column>
+          <el-table-column prop="area" label="区域" show-overflow-tooltip>
+          </el-table-column>
+          <el-table-column prop="num" label="告警数量" show-overflow-tooltip>
+          </el-table-column>
+          <el-table-column
+            prop="todonum"
+            fixed
+            label="未处理数量"
+            show-overflow-tooltip
+          >
+          </el-table-column>
+        </el-table>
+    </div>
+   
+  </div>
+  <div>2</div>
+  <div>3</div>
+</div>
+<!-- 使用rem布局的：设置fontSize根元素的值就是1rem
+例如：htmlDom.style.fontSize = `${750 / 7.5}px`;
+     1rem=100px
+ -->
+ <!-- vue2webpack配置rem：
+ https://blog.csdn.net/JackieDYH/article/details/115463646
+  -->
   </div>
 </template>
 <script>
 export default {
   data(){
        return{
+          tableData: [
+        {
+          index: 1,
+          area: "A区",
+          num: "247",
+          todonum: "287",
+        },
+        {
+          index: 1,
+          area: "A区",
+          num: "247",
+          todonum: "287",
+        },
+        {
+          index: 1,
+          area: "A区",
+          num: "247",
+          todonum: "287",
+        },
+        {
+          index: 1,
+          area: "A区",
+          num: "247",
+          todonum: "287",
+        },
+        {
+          index: 1,
+          area: "A区",
+          num: "247",
+          todonum: "287",
+        },
+        {
+          index: 1,
+          area: "A区",
+          num: "247",
+          todonum: "287",
+        },
+      ],
         arr:[1,2,3,4,5,6],
         formInline: {
           user: '',
@@ -94,6 +163,7 @@ export default {
         }
        }
   },
+
 methods:{
 }
 }
@@ -171,10 +241,22 @@ background-color: blue;
 } */
 .grid-container {
   display: grid;
-  grid-template-columns: auto auto auto auto auto;
-  grid-gap: 10px;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap:10px;
   background-color: #2196F3;
   /* padding: 10px; */
+}
+.grid-container1{
+  margin-top: 20px;
+   display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-gap:10px;
+  background-color: #2196F3;
+}
+.grid-container1 > div {
+  background-color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  font-size: 30px;
 }
 
 .grid-container > div {

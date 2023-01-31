@@ -133,6 +133,12 @@ const children=[
     meta: { title: '详情页面', icon: '' },
     component: resolve => require(["@/views/detail/index.vue"], resolve)
 },
+{
+    path:'minx',
+    name: "minx",
+    meta: { title: 'vue混入', icon: '' },
+    component: resolve => require(["@/views/minx/index.vue"], resolve)
+},
 // {   path:'detail',
 //     name: "detail",
 //     // 要去那个路由就对哪个路由做判断，路由独享的守卫

@@ -23,6 +23,7 @@
     "node-sass": "^4.14.1",
     "sass-loader": "^7.0.0",
     "streamsaver": "^2.0.6",
+    "v-fit-columns": "^0.2.0",
     "vue": "^2.6.11",
     "vuex": "^3.6.2"
   },
