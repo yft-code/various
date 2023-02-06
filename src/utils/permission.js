@@ -164,11 +164,6 @@ const children=[
 }]
 router.beforeEach((to, from, next) => {//前置守卫用方法里面写箭头函数(()=>{})
     console.log('router',router);
-    let tree= {path:'tree',
-    name:"tree",
-    meta: { title: '树形', icon: '' },
-    component: resolve => require(["@/views/tree/index.vue"], resolve)
-   }
     //假设的例子
     let token=true;
     if(to.path==='/'||to.path==='/login'){
