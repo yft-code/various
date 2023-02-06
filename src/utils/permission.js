@@ -186,9 +186,17 @@ router.beforeEach((to, from, next) => {//前置守卫用方法里面写箭头函
             // 然后再动态添加该路由router.addRoutes
             // 路由每切换一次,下面的代码就调用一次，
             resetRouter()
+            // 404页面要加到最后
+            routersss.push({
+                path: '*',
+                redirect: '/404',
+                hidden: true
+              })
             const newRoutes = router.options.routes.concat(routersss)
             router.options.routes = newRoutes
+            console.log('router.options.routes',router.options.routes);
             router.addRoutes(routersss) // 动态添加可访问路由表
+            console.log();
             // 遇到问题：对于addRoute添加的路由，在刷新时会白屏
             // https://blog.csdn.net/qq_45325810/article/details/120866401
             // 获取新菜单路由，设置404页面等
@@ -213,3 +221,5 @@ router.beforeEach((to, from, next) => {//前置守卫用方法里面写箭头函
     }
         
  })
+//  添加404页面
+// 一些白名单和一些权限

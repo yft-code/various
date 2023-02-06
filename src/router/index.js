@@ -12,6 +12,11 @@ const routes=[
         component: resolve => require(['@/views/login/index'], resolve),
         hidden: true
       },
+      {
+        path: '/404',
+        component: resolve => require(['@/views/404'], resolve),
+        hidden: true
+      }
     
 //     {
 //     path: '/',
