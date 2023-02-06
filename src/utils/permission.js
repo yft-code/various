@@ -14,12 +14,12 @@ const children=[
         meta: { title: '首页', icon: '' },
         component: resolve => require(["@/views/cities/index.vue"], resolve)
     },
-    {   path:'webscoket',
+    {   path:'/webscoket',
         name: "webscoket",
         meta: { title: 'webscoket', icon: '' },
         component: resolve => require(["@/views/webscoket/index.vue"], resolve)
     },
-    {   path:'video',
+    {   path:'/video',
         name: "video",
         meta: { title: '视频流', icon: '' },
         component: resolve => require(["@/views/video/index.vue"], resolve)
@@ -31,103 +31,103 @@ const children=[
         component: resolve => require(["@/views/ai/aiIndex/index"], resolve),
         children: [
         { 
-            path:'vuex',
+            path:'/vuex',
             name: "vuex",
             meta: { title: 'vuex', icon: '' },
             component: resolve => require(["@/views/vuex/index.vue"], resolve)
         },
         {
-        path:'on',
+        path:'/on',
         name: "on",
         meta: { title: '父子传值', icon: '' },
         component: resolve => require(["@/views/on/index.vue"], resolve)
     },
         ],
       },
-    {   path:'selfAdapting',
+    {   path:'/selfAdapting',
         name:"selfAdapting",
         meta: { title: '自适应', icon: '' },
         component: resolve => require(["@/views/selfAdapting/index.vue"], resolve)
     },
-    {   path:'tree',
+    {   path:'/tree',
         name:"tree",
         meta: { title: '数据处理', icon: '' },
         component: resolve => require(["@/views/tree/index.vue"], resolve)
     },
-    {   path:'addMultity',
+    {   path:'/addMultity',
         name:"addMultity",
         meta: { title: '批量添加', icon: '' },
         component: resolve => require(["@/views/batch/index.vue"], resolve)
     },
-    {   path:'downLoad',
+    {   path:'/downLoad',
         name:"downLoad",
         meta: { title: '下载', icon: '' },
         component: resolve => require(["@/views/download/index.vue"], resolve),
         children:[
             {
-                path:'zip',
+                path:'/zip',
                 name:"zip",
                 meta: { title: '下载', icon: '' },
                 component: resolve => require(["@/views/download/zip.vue"], resolve), 
             },
             {
-                path:'bigfile',
+                path:'/bigfile',
                 name:"bigfile",
                 meta: { title: '大文件下载', icon: '' },
                 component: resolve => require(["@/views/download/bigfile.vue"], resolve), 
             }
         ]
     },
-    {   path:'router',
+    {   path:'/router',
         name:"router",
         meta: { title: '路由', icon: '' },
         component: resolve => require(["@/views/routers/index.vue"], resolve)
     },
-    {   path:'virtualDom',
+    {   path:'/virtualDom',
         name: "virtualDom",
         meta: { title: 'virtualDom', icon: '' },
         component: resolve => require(["@/views/virtualDom/index.vue"], resolve)
     },
-    {   path:'brower',
+    {   path:'/brower',
         name: "brower",
         meta: { title: 'brower', icon: '' },
         component: resolve => require(["@/views/brower/index.vue"], resolve)
     },
-    {   path:'konva',
+    {   path:'/konva',
         name: "konva",
         meta: { title: 'konva', icon: '' },
         component: resolve => require(["@/views/konva/index.vue"], resolve)
     },
-    {   path:'login',
+    {   path:'/login',
         name: "login",
         meta: { title: '登录', icon: '' },
         component: resolve => require(["@/views/login/index.vue"], resolve)
     },
-    {   path:'es6',
+    {   path:'/es6',
         name: "es6",
         meta: { title: 'es6', icon: '' },
         component: resolve => require(["@/views/es6/index.vue"], resolve),
         children:[
             {
-            path:'arrow',
+            path:'/arrow',
             name: "arrow",
             meta: { title: '箭头函数', icon: '' },
             component: resolve => require(["@/views/es6/arrow.vue"], resolve),
             },
             {
-                path:'arr',
+                path:'/arr',
                 name: "arr",
                 meta: { title: '数组的扩展', icon: '' },
                 component: resolve => require(["@/views/es6/arr.vue"], resolve),
                 },
                 {
-                    path:'unicode',
+                    path:'/unicode',
                     name:'unicode',
                     meta: { title: 'unicode', icon: '' },
                     component: resolve => require(["@/views/es6/unicode.vue"], resolve),
                 },
                 {
-                    path:'func',
+                    path:'/func',
                     name:'func',
                     meta: { title: '函数', icon: '' },
                     component: resolve => require(["@/views/es6/function.vue"], resolve),
@@ -171,7 +171,7 @@ router.beforeEach((to, from, next) => {//前置守卫用方法里面写箭头函
    }
     //假设的例子
     let token=true;
-    if(to.path==='/'){
+    if(to.path==='/'||to.path==='/login'){
       if(token){
         //  alert('登录了');
         // 严格意义上应该是后端返回的第一个路由的path
@@ -189,8 +189,23 @@ router.beforeEach((to, from, next) => {//前置守卫用方法里面写箭头函
             const newRoutes = router.options.routes.concat(routersss)
             router.options.routes = newRoutes
             router.addRoutes(routersss) // 动态添加可访问路由表
-           // 获取新菜单路由，设置404页面等
-            next()
+            // 遇到问题：对于addRoute添加的路由，在刷新时会白屏
+            // https://blog.csdn.net/qq_45325810/article/details/120866401
+            // 获取新菜单路由，设置404页面等
+            // next({ path: to.path, replace: true })
+            // 解决页面刷新出现空白页面问题
+            // https://blog.csdn.net/m0_46529579/article/details/110645334
+            //解决页面刷新出现空白页面问题 way1
+            if(to.matched.length===0){
+                next({path:to.path})
+            }else{
+                next()
+            }
+            // if (to.path) {
+            //     next({ path: to.path });
+            // } else {
+            //     next();
+            // }
         }else {
             next({ path: '/' })
           }
