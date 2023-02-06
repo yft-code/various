@@ -6,6 +6,7 @@ Vue.config.productionTip = false
 import Vuex from 'vuex';
 import Plugin from 'v-fit-columns';
 Vue.use(Plugin);
+import '.././src/utils/permission'
 // import $ from 'jquery';
 // window.jQuery = $;
 // window.$ = $;
@@ -16,6 +17,7 @@ Vue.use(ElementUI);
 Vue.use(Vuex)
 import axios from "axios";
 Vue.prototype.$http = axios;
+// 
 new Vue({
   router,
   store,

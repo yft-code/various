@@ -15,6 +15,13 @@
       <div>
         <img src="@/assets/img/dom.jpg" alt="">
       </div>
+      <div>
+        vue动态路由添加，vue-router的addRoute方法实现权限控制，添加根路由和子路由
+      </div>
+      <div>
+        路由传参：
+        
+      </div>
   </div>
 </template>
 <script>

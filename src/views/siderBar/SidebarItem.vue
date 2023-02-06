@@ -94,6 +94,7 @@ export default {
       return false;
     },
     resolvePath(routePath) {
+       //把一个路径或路径片段的序列解析为一个绝对路径
       return path.resolve(this.basePath, routePath);
     },
   },
