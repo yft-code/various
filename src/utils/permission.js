@@ -182,11 +182,16 @@ router.beforeEach((to, from, next) => {//前置守卫用方法里面写箭头函
             // 路由每切换一次,下面的代码就调用一次，
             resetRouter()
             // 404页面要加到最后
-            routersss.push({
-                path: '*',
-                redirect: '/404',
-                hidden: true
-              })
+            const is404=routersss.some(item=>{
+                return item.path==='*'
+            })
+            if(!is404){
+                routersss.push({
+                    path: '*',
+                    redirect: '/404',
+                    hidden: true
+                  })
+            } 
             const newRoutes = router.options.routes.concat(routersss)
             router.options.routes = newRoutes
             console.log('router.options.routes',router.options.routes);
