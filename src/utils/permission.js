@@ -83,6 +83,11 @@ const children=[
         meta: { title: '路由', icon: '' },
         component: resolve => require(["@/views/routers/index.vue"], resolve)
     },
+    { path:'/axios',
+      name:"axios",
+      meta: { title: 'axios', icon: '' },
+      component: resolve => require(["@/views/axios/index.vue"], resolve)
+    },
     {   path:'/virtualDom',
         name: "virtualDom",
         meta: { title: 'virtualDom', icon: '' },
