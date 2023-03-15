@@ -1,6 +1,7 @@
 <template>
     <div>
-      <el-button @click="createApp">开始启动</el-button>
+
+      <!-- <el-button @click="createApp">开始启动</el-button>
       <el-button @click="getHistory">获取历史记录</el-button>
       <el-button @click="uploadDown">下载</el-button>
       <span>下载句柄:</span>
@@ -8,7 +9,7 @@
       <div @click="getUploadMeg">获取下载信息</div>
       <div class="info"></div>
        <div id="video" style="height:0;width:0" class="video">
-      </div>
+      </div> -->
     </div>
 </template>
 <script>
@@ -243,3 +244,23 @@ showVideo(type) {
  }
 </script>
 
+<style scoped>
+      #box{
+				width:100%;
+				height:100px;
+				display:flex;
+				margin:10px;
+			}
+			#left,#right{
+				flex:1;
+				height:100px;
+				margin:10px;
+				background-color:#999;
+			}
+			#center{
+        width: 90%;
+				height:100px;
+				margin:10px;/*左右margin不会叠加*/
+				background-color:#f00;
+			}
+</style>

@@ -82,25 +82,7 @@
   <div class="item1" v-for="item in 6" :key="item">{{item}}</div>
 </div>
 <div class="grid-container1">
-  <div style="">
-    <div style="">
-          <el-table style="width:100%"  v-fit-columns :data="tableData" v-loading="loading">
-          <el-table-column prop="index" label="排名">
-          </el-table-column>
-          <el-table-column prop="area" label="区域" show-overflow-tooltip>
-          </el-table-column>
-          <el-table-column prop="num" label="告警数量" show-overflow-tooltip>
-          </el-table-column>
-          <el-table-column
-            prop="todonum"
-            fixed
-            label="未处理数量"
-            show-overflow-tooltip
-          >
-          </el-table-column>
-        </el-table>
-    </div>
-   
+  <div style=""> 
   </div>
   <div>2</div>
   <div>3</div>
