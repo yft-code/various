@@ -54,6 +54,31 @@ const children=[
         meta: { title: '数据处理', icon: '' },
         component: resolve => require(["@/views/tree/index.vue"], resolve)
     },
+    {   path:'/svg',
+        name:"svg",
+        meta: { title: 'svg', icon: '' },
+        component: resolve => require(["@/views/svg/index.vue"], resolve)
+    },
+    {   path:'/imgLoad',
+    name:"imgLoad",
+    meta: { title: '图片懒加载', icon: '' },
+    component: resolve => require(["@/views/imgLoad/index.vue"], resolve)
+},
+{   path:'/virtualList',
+name:"virtualList",
+meta: { title: 'virtual List', icon: '' },
+component: resolve => require(["@/views/virtualList/index.vue"], resolve)
+},
+    {   path:'/3d',
+    name:"3d轮播图",
+    meta: { title: '3d轮播图', icon: '' },
+    component: resolve => require(["@/views/3d/index.vue"], resolve)
+},
+    {   path:'/axios',
+    name:"axios",
+    meta: { title: 'axios', icon: '' },
+    component: resolve => require(["@/views/axios/index.vue"], resolve)
+},
     {   path:'/addMultity',
         name:"addMultity",
         meta: { title: '批量添加', icon: '' },
