@@ -13,6 +13,7 @@
         <div>
             {{name}}
           为啥{{school.name}}踩踩踩踩踩踩从{{school.age}}
+         新增： {{newName}}
         </div>
         <ul>
             <li>1</li>
@@ -35,6 +36,12 @@
                 age:'age'
             }
         },
+        // 具有缓存，如果数据不变化，试图就不会刷新
+        computed:{
+           newName(){
+               return this.name+'name'
+           } 
+        }
         // methods:{
 
         // },
