@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js">
+</script>
+<body>
+    
+</body>
+</html>
+<script>
+    $.ajax({
+        type:'GET',
+        url:'./data.json',
+          success:function(res){
+              const {id} = res  //对象的解构赋值
+              console.log('res',res);
+            //   返回的结果
+            $.ajax({
+        type:'GET',
+        url:'./data.json',
+        data:{id},
+          success:function(res){
+            $.ajax({
+        type:'GET',
+        url:'./data.json',
+        data:{id},
+          success:function(res){
+           
+            //   返回的结果
+          }
+    })
+            //   返回的结果
+          }
+    })
+          }
+    })
+    // // 思考：在哪里发生ajax请求
+    // $.ajax({
+    //     type:'GET',
+    //     url:'./data.json',
+    //     data:{id},
+    //       success:function(res){
+           
+    //         //   返回的结果
+    //       }
+    // })
+</script>

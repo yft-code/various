@@ -1,11 +1,13 @@
 //   发布订阅 观察者模式   被观察者
-// 订阅
+// https://zhuanlan.zhihu.com/p/75454363
+// Watcher对象和Observer对象之间的纽带，每一个Observer都有一个Dep实例,用来存储订阅者Watcher
 class Dep{
     constructor(){
         this.subs=[]//存放所有的watcher
     }
     // 订阅
     addSub(watcher){
+        console.log('监听了ssss');
         //添加watcher
       this.subs.push(watcher)
 
@@ -17,7 +19,7 @@ class Dep{
        })
     }
 }
-// 观察者
+// 订阅者,将模板和Observer对象结果在一起生成Watcher实例，Watcher是订阅者中的订阅者
 class Watcher{
     constructor(vm,expr,cb){
         this.vm=vm
@@ -27,14 +29,16 @@ class Watcher{
         this.oldValue=this.get()
     }
     get(){
-        Dep.target=this;//先把自己放在this上
+        Dep.target=this;//先把自己放在this上,this是一个watcher对象
         let value=CompileUtil.getVal(this.vm,this.expr)//取值
+        console.log('watcher的get方法');
         Dep.target=null//不取消任何值都是重新
         return value
     }
     update(){
         // 更新操作,数据变化后，会调用观察者的update方法
         let newVal=CompileUtil.getVal(this.vm,this.expr)
+        console.log('watcher的update方法');
         if(newVal!==this.oldValue){
             this.cb(newVal)
         }
@@ -43,6 +47,7 @@ class Watcher{
 // vm.$watch(vm,'school',(newVal)=>{
 
 // })
+// vue中的数据对象在初始化过程中转化为Observer对象
 class Observer{//实现数据劫持
 constructor(data){
     console.log('data',data);
@@ -62,6 +67,7 @@ defineReactive(obj,key,value){
     let dep=new Dep()//给每一个属性 都加上一个具有发布订阅的功能
      Object.defineProperty(obj,key,{
          get(){
+             console.log('fffff',Dep.target);
             // 创建watcher时，会取到对应的内容，并且把watcher放到了全局上
              Dep.target&&dep.subs.push(Dep.target)
              return value
@@ -88,7 +94,6 @@ constructor(el,vm){
     this.vm=vm;
     let fragment=this.node2fragment(this.el)
     // 把节点中的内容进行替换
-
     // 编译模板，用数据编译
     this.compile(fragment)
     // 把内容塞到页面
@@ -147,14 +152,16 @@ node2fragment(node){
   return fragment
 }
     //判断是不是元素节点
-    isElementNode(node){
+isElementNode(node){
      return node.nodeType===1
     }
 }
 // 公共的编译方法
 CompileUtil={
     getVal(vm,expr){//vm.$data
+        console.log('我是expr',expr);
     return expr.split('.').reduce((data,current)=>{
+        console.log(' data[current]', data[current]);
             return data[current]      
         },vm.$data)
        
