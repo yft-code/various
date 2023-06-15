@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+   /*
+      希望在someFn函数执行时，可以记录一条日志
+      在不修改原函数的基础上，为其增加记录日志的功能
+      可以通过高阶函数，来动态的生成一个新函数
+   */
+    function someFn(cb){
+        return ()=>{
+            console.log('432423432');
+            const result =cb()
+            return result
+        }
+    }
+    function result() {
+           console.log('dhsjahdsahdsagdh日志');
+    }
+    let outer=someFn(result)
+    console.log('dondnd',outer);
+    outer()
+</script>

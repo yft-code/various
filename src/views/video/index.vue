@@ -1,25 +1,26 @@
 <template>
   <div>
-    <div style="min-height:600px;">
-  <el-steps direction="vertical" :active="1">
-    <el-step title="步骤 1">
-        dashgdasgdj
-    </el-step>
-    <el-step title="步骤 2"></el-step>
-    <el-step title="步骤 3"
-    >
-      <div slot="description">
-dsdasdasdash火炬计划很久很久很久很久很久
-      </div>
-    </el-step>
-  </el-steps>
-</div>
+ <video ref="videos" width="320" height="240" controls>
+  <source src="../../assets/movie.mp4" type="video/mp4">
+  您的浏览器不支持 HTML5 video 标签。
+</video>
+ <el-button @click="getVideo">获取视频下载</el-button>
   </div>
 </template>
 
 <script>
 export default {
-
+   data(){
+    return{
+        math:'wwwwww'
+    }
+   },
+   methods:{
+    getVideo(){
+      let video=this.$refs.videos
+      console.log('video',video);
+    }
+   }
 }
 </script>
 

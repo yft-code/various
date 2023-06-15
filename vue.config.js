@@ -1,24 +1,29 @@
-//vue.config.js的官网配置
-//https://cli.vuejs.org/zh/config/#vue-config-js
-const path=require('path')//nodejs核心模块，专门用来处理路径问题
-// const resolve = (dir) => path.join(__dirname, dir);
-module.exports={
-//   // 入口
-//   entry:'./src/main.js',//相对路径
-//   // 出口
-//   output:{
-//     // 文件的输出路径
-//     // path:resolve("dist"),//绝对路径
-//     path:path.resolve(__dirname,'dist'),
-//     filename:'4444'
-//   },
-//   // 加载器
-//   module:{
-//     rules:[],
-//   },
-//   // 插件
-//   plugins:[],
-//   // 模式
-//   mode:'development',
-  lintOnSave:false
+module.exports = {
+  productionSourceMap: false,
+  publicPath: './',
+  outputDir: 'dist',
+  assetsDir: 'assets',
+  devServer: {
+    // host: "localhost",
+    // port: 8000, // 端口号
+    // open: true, //配置自动启动浏览器
+    // 跨域是在开发环境配置的
+    hot:true,
+    hotOnly:true,
+    compress:true,
+    proxy:{
+      // 将8080映射到8888
+      // "/api":"http://localhost:8888"
+      "/api":{
+        // 默认不支持https
+        target:"https://www.vue-js.com/api",//相当于
+        changeOrigin: true,//
+        // 路径重写
+        pathRewrite:{
+        "^api":"",//以api开头的路径代换为空字符串
+        }
+      }
+    }
+},
+lintOnSave:false
 }

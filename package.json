@@ -10,6 +10,7 @@
   "dependencies": {
     "@amap/amap-jsapi-loader": "^1.0.1",
     "axios": "^0.27.2",
+    "cesium": "^1.105.2",
     "core-js": "^3.6.5",
     "echarts": "^5.4.0",
     "element-china-area-data": "^5.0.2",
@@ -60,6 +61,9 @@
       "no-console": "off",
       "no-irregular-whitespace": "off",
       "no-debugger": "off"
+    },
+    "globals": {
+      "Cesium":true
     }
   },
   "browserslist": [

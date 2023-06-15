@@ -13,18 +13,16 @@ const routes=[
         hidden: true
       },
       {
+        path: '/rice',
+        component: resolve => require(['@/views/rice/index'], resolve),
+        hidden: true
+      },
+      {
         path: '/404',
         component: resolve => require(['@/views/404'], resolve),
         hidden: true
-      }
-    
-//     {
-//     path: '/',
-//     name: 'main',
-//     component: resolve => require(["@/views/main.vue"], resolve),
-//     meta: { title: '', icon: '' },
-//     children:child.children
-// }
+      },
+
 ]
 const createRouter = () => new Router({
     routes: routes

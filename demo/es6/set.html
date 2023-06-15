@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+  set:表示无重复值的集合
+add()
+delete()
+has()
+键和值一样
+     -->
+<script>
+ let set = new Set()
+ console.log('set',set);
+ set.add(1)
+ set.add(2)
+ set.add([1,2,3,4,5])
+ console.log('seee',set);
+ console.log(set.has(2));
+set.forEach((item,index)=>{
+    console.log(item===index);
+    console.log('index',item,index);
+})
+// 将set转换为数组,通过扩展运算符
+let set2=new Set([12,34,56])
+let arr=[...set2]
+console.log('set2',arr,set2);
+// 1.set中对象的引用无法被释放
+let set3=new Set(),obj={};
+set3.add(obj)
+obj=null
+
+let set4=new WeakSet(),obj1={}
+// WeakSet
+// 1.不可迭代
+// 2.不能传入非对象类型的参数
+// 3.没有forEach
+// 4.
+let map=new Map()
+map.set('name','zhangss')
+map.set('age','ssss')
+console.log('map',map);
+
+let name=map.get('name')
+console.log('name',name);
+map.delete('name')
+map.clear()
+console.log(map);
+map.set([1,2,3,4,5,6,7,89])
+map.set(['a',[1,2,3]],'hello')
+let m=new Map([
+    ['a',1],
+    ['c',2]
+])
+console.log('m',m);
+</script>
+</body>
+</html>

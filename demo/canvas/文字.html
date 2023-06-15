@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="cx" width="900" height="400"></canvas>
+    <video src="../../src/assets/movie.mp4"></video>
+    <button id="btn">播放</button>
+</body>
+</html>
+<script>
+    let cx=document.getElementById('cx')
+    let ctx=cx.getContext('2d')
+    ctx.font='100px Microsoft YaHei'
+    ctx.strokeStyle='#ff0000'
+    // 填充渲染字体
+    // 文本的基线以及对齐的方式
+    // ctx.fillText('laodasd',300,200,100)
+    ctx.strokeText('Hello!',300,200)
+    ctx.arc(300,200,5,0,2*Math.PI)
+    ctx.fill()
+</script>

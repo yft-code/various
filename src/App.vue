@@ -5,6 +5,10 @@
 </template>
 <script>
 export default{
+  mounted(){
+    console.log('this.$api',this.$api);
+    this.$api.service.getExample('hhhhhh')
+  }
 }
 </script>
 <style lang="scss">

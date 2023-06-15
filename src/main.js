@@ -6,7 +6,7 @@ Vue.config.productionTip = false
 import Vuex from 'vuex';
 import Plugin from 'v-fit-columns';
 Vue.use(Plugin);
-import '.././src/utils/permission'
+import '@/utils/permission'
 // import $ from 'jquery';
 // window.jQuery = $;
 // window.$ = $;
@@ -15,8 +15,12 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 Vue.use(ElementUI);
 Vue.use(Vuex)
+import '@/assets/css/common.css'
+import api from './api/index'
 import axios from "axios";
-Vue.prototype.$http = axios;
+Vue.prototype.$api = api;
+// Vue.prototype.$http = axios;
+// Vue.prototype.$http = axios;
 // 图片懒加载指令
 Vue.directive('lazy', function (el, binding) {
    //保存图片地给 imgSrc

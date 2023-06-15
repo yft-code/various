@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        perspective: 300px;
+    }
+div{
+    font-size: 100px;
+    color: transparent;
+    /* 字体描边 */
+    -webkit-text-stroke:1px #f00;
+}
+.radio{
+    margin-left: 50px;
+    width: 500px;
+    height: 500px;
+    /* border-radius: 50%; */
+    border: 3px solid yellow;
+    transition: all 2s;
+}
+
+.radio:hover{
+    background-color: #f00;
+    /* transform:perspective(200px) rotateY(90deg) scaleX(0.7); */
+    box-shadow: 0px 0px 5px 5px #f00;
+    }
+    .amations{
+          width: 400px;
+          height: 400px;
+          background: #000;
+          animation: identifier 5s infinite linear  1s;
+    }
+    @keyframes identifier {
+        35%{
+            margin-left: -210px;
+
+        }
+        70%{
+            margin-left: 100px;
+        }
+        100%{
+            margin-left: 0;
+            /* width: 200px; */
+        }
+        
+    }
+</style>
+<body>
+    <!-- transform 2D 属性 -->
+    <div>
+        hhh
+    </div>
+    <div class="radio">
+       
+    </div>
+    <div class="amations">
+         
+    </div>
+</body>
+</html>

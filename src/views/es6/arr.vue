@@ -5,7 +5,7 @@
 -->
 
 <template>
-  <div style="width:100%;border: 1px solid yellow;height:600px" v-load="loading">
+  <div style="width:100%;border: 1px solid yellow;height:600px">
     <el-button v-if="show" @click="isShow">显示数据</el-button>
     <div style="margin-bottom: 50px;">
       <!-- 周一 -->

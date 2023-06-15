@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .box{
+        width: 30px;
+        height: 30px;
+        background: #000;
+        position:absolute;
+        cursor: pointer;
+    }
+</style>
+<body>
+    <div class="box" id="box">
+        ddd
+    </div>
+</body>
+</html>
+<script>
+    // clientX,clientY指的是可视区域的点位坐标，也就是鼠标点击会产生事件的区域，不包括浏览器周围的区域
+    document.addEventListener('mousemove',(e)=>{
+               console.log('e',e,e.clientX,e.clientY);
+               let box=document.getElementById('box')
+            //    top和left
+               box.style.top=(e.pageY-30/2)+'px'
+               box.style.left=(e.pageX-30/2)+'px'
+    })
+</script>

@@ -2,8 +2,8 @@
 export default {
   namespaced: true,
   state:{
-    token:localStorage.getItem('token')&&localStorage.getItem('token')||'',
-    mount:'111'
+    token:false,
+    mount:'111',
    },
   actions: {
     // 登录时使用

@@ -68,9 +68,6 @@ export default {
     return {};
   },
   mounted() {
-    //  const aa =  document.getElementsByTagName('a')[1]
-    //     aa && (aa.parentElement.hidden = true)
-    //     aa && (aa.parentElement.style.display = true)
   },
   methods: {
     hasOneShowingChild(children = [], parent) {

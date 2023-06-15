@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="cx" width="600" height="400"></canvas>
+</body>
+</html>
+<script>
+    let cx=document.getElementById('cx')
+    let ctx=cx.getContext('2d')
+    var img=new Image()
+    img.src='./ljx.jpg'
+    img.onload=function (){
+        // way1：能够缩放图片 drawImage
+        // 参数1:图片对象
+        // 参数2：将图片渲染到画布的水平位置
+        // 参数3：将图片渲染到画布的垂直位置
+        // 参数4：将图片进行缩放 600
+        // 参数5：将图片进行缩放 400
+        //  ctx.drawImage(img,0,0,600,400)//图片大小就是400*600
+        // way2:剪裁原图片的起点位置和矩形的宽高
+        ctx.drawImage(img,640,0,1280,720,0,0,600,400)//图片大小就是400*600
+    }
+</script>

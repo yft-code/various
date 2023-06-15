@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="cx">
+
+    </canvas>
+</body>
+</html>
+<script>
+    let cx=document.getElementById('cx')
+    let ctx=cx.getContext('2d')
+    // 2*Math.PI  度数
+    ctx.beginPath()
+    ctx.arc(95,50,40,0,2*Math.PI);
+    // ctx.fillStyle="#ff0";//设置填充颜色
+    // ctx.fill()//调用填充方法才可以填充
+    ctx.strokeStyle="#eee";//将线条颜色设置为蓝色
+    // 设置边框的宽度
+    ctx.lineWidth = 6;
+    ctx.stroke();//调用stroke()方法才可以设置其颜色
+    ctx.closePath()
+    ctx.beginPath()
+    // let math=Math.PI
+    // ctx.arc(95,50,40,0.5*Math.PI,math);
+    let math=0.5*Math.PI
+   let t=setInterval(()=>{
+        console.log('Math.PI',Math.PI);
+        console.log(math<Math.PI);
+        ctx.arc(95,50,40,math,math+0.8);
+        ctx.strokeStyle="blue";//将线条颜色设置为蓝色
+    // 设置边框的宽度
+    ctx.lineWidth = 6;
+    ctx.stroke();//调用stroke()方法才可以设置其颜色
+    ctx.closePath()
+        math=+0.6
+        clearInterval(t)
+    },10)
+   
+    // ctx.fillStyle="#ff0";//设置填充颜色
+    // ctx.fill()//调用填充方法才可以填充
+   
+    // ctx.arc(95,50,30,8,Math.PI);
+     
+   
+</script>

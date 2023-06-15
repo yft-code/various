@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="canvas" width="800" height="800"></canvas>
+</body>
+</html>
+<script>
+   const canvas = document.getElementById("canvas");
+const ctx = canvas.getContext("2d");
+
+const gradient = ctx.createRadialGradient(250, 150, 10, 300,200, 100);
+// Add three color stops
+gradient.addColorStop(0, "#ffcccc");
+// gradient.addColorStop(0.6, "white");
+gradient.addColorStop(1, "red");
+ctx.fillStyle = gradient;
+ctx.arc(300,200,100,0,Math.PI*2)
+ctx.fill();
+
+</script>

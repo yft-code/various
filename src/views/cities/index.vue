@@ -13,7 +13,6 @@
       :value="item.value">
     </el-option>
        </el-select>
-
        <el-select
     v-model="value2"
     multiple
@@ -27,13 +26,19 @@
       :value="item.label">
     </el-option>
        </el-select>
-
+    
   </div>
+  <el-button v-has="'add'">添加</el-button>
+  <el-button v-has="'editssss'">编辑</el-button>
 </div>
 </template>
 <script>
+import hasDirective from '../../directives/has'
 import { provinceAndCityData } from "element-china-area-data";
 export default {
+  directives:{
+     has:hasDirective
+  },
   data(){
        return{
         value1:'',
@@ -43,6 +48,7 @@ export default {
        }
   },
     mounted() {
+      console.log('this.router的权限',this.$route);
     this.provinceAndCityData = provinceAndCityData;
   },
   computed: {

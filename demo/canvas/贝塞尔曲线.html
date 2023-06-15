@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="cx" width="700" height="400">
+
+    </canvas>
+</body>
+</html>
+<script>
+    
+    let cx=document.getElementById('cx')
+    let tcx=cx.getContext('2d')
+    // 贝塞尔曲线
+    tcx.beginPath()
+    tcx.moveTo(200,300)
+    tcx.quadraticCurveTo(150,300,150,200)
+    // 上一个的终点是下一个的起始点
+    tcx.quadraticCurveTo(150,100,300,100)
+    tcx.quadraticCurveTo(450,100,450,200)
+    tcx.quadraticCurveTo(450,300,250,300)
+    tcx.quadraticCurveTo(250,350,150,350)
+    tcx.quadraticCurveTo(150,300,200,300)
+    tcx.stroke()
+    tcx.closePath()
+</script>

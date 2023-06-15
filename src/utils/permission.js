@@ -7,17 +7,24 @@ import router,{resetRouter} from "../router";
 // 
 // 步骤：1.首先判断登录的路由是否是登录页，是的话判断是否有token,有toten和无token的操作
 //       2.如果登录的不是首页,判断是否有token,有toten和无token的操作
+import store from '../store'
+console.log('12312312',store);
 const children=[
         {
         path: "/cities",
         name: "cities",
-        meta: { title: '首页', icon: '' },
+        meta: { title: '首页', icon: '', buttons:['add','edit','export'] },
         component: resolve => require(["@/views/cities/index.vue"], resolve)
     },
     {   path:'/webscoket',
         name: "webscoket",
         meta: { title: 'webscoket', icon: '' },
         component: resolve => require(["@/views/webscoket/index.vue"], resolve)
+    },
+    {   path:'/托拽',
+        name: "托拽",
+        meta: { title: '拖拽时间轴', icon: '' },
+        component: resolve => require(["@/views/拖动的时间轴/index.vue"], resolve)
     },
     {   path:'/video',
         name: "video",
@@ -84,6 +91,11 @@ component: resolve => require(["@/views/virtualList/index.vue"], resolve)
     meta: { title: 'axios', icon: '' },
     component: resolve => require(["@/views/axios/index.vue"], resolve)
 },
+{   path:'/eventBus',
+name:"eventBus",
+meta: { title: 'eventBus', icon: '' },
+component: resolve => require(["@/views/eventBus/index.vue"], resolve)
+},
     {   path:'/addMultity',
         name:"addMultity",
         meta: { title: '批量添加', icon: '' },
@@ -135,7 +147,7 @@ component: resolve => require(["@/views/virtualList/index.vue"], resolve)
     },
     {   path:'/login',
         name: "login",
-        meta: { title: '登录', icon: '' },
+        meta: { title: '登录11', icon: '' },
         component: resolve => require(["@/views/login/index.vue"], resolve)
     },
     {   path:'/es6',
@@ -178,6 +190,12 @@ component: resolve => require(["@/views/virtualList/index.vue"], resolve)
         component: resolve => require(["@/views/detail/index.vue"], resolve)
     },
     {
+        path:'video',
+        name: "video",
+        meta: { title: '视频', icon: '' },
+        component: resolve => require(["@/views/video/index.vue"], resolve)
+    },
+    {
         path:'minx',
         name: "minx",
         meta: { title: 'vue混入', icon: '' },
@@ -197,19 +215,20 @@ component: resolve => require(["@/views/virtualList/index.vue"], resolve)
     meta: { title: '', icon: '' },
     children:children
 }]
-router.beforeEach((to, from, next) => {//前置守卫用方法里面写箭头函数(()=>{})
-    console.log('router',router);
+router.beforeEach((to, from, next) => {
+    //前置守卫用方法里面写箭头函数(()=>{})
+    console.log('routercccc',router);
     //假设的例子
-    let token=true;
-    if(to.path==='/'||to.path==='/login'){
+    let token=store.state.ModuleA.token;
+    if (to.path==='/'||to.path==='/login') {
       if(token){
-        //  alert('登录了');
+         alert('登录了');
         // 严格意义上应该是后端返回的第一个路由的path
          next('/webscoket');//跳到你定义的页面
-      }else{
+      } else {
        next();//跳到登录页面
       }
-    }else{
+    } else {
         if(token){
             // 动态添加路由，此时路由列表已经显示在页面，但是点击时没有页面应用
             // 需要将添加的路由添加到router.options.routes，

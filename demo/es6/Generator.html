@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    // Generator函数 可以通过yield关键字,将函数挂起，异步编程也提供了这种
+    // 与普通函数的区别
+        //  1.function 带*
+        //  2.只能在函数内部使用yield表达式,让函数挂起
+    // 生成器就是一个特殊的函数，异步编程的解决方案
+    // 以前的回调函数纯回调函数,
+    // function *gen(){
+    //     console.log('1111');
+    //     // yiled可以看作函数代码的分隔符
+    //     yield '一只没有如的哈'
+    //     console.log('333333');
+    //     yield 'sdsdsdsds'
+    //     console.log('44444');
+    // }
+ // 调用
+    // let iterator=gen()
+    // iterator.next()
+    // iterator.next()
+    // iterator.next()
+    // iterator.next()
+    // iterator.next()
+    // 遍历
+    // for(let v of gen()){
+    //     // yiled后面的表达式
+    //     console.log('v',v);
+    // }
+//生产器函数的参数传递
+function *as(arg){
+    console.log('args',arg);
+    let one=yield 111
+    console.log('one',one);
+    let two=yield 222
+    console.log('two',two);
+    yield 333
+} 
+// 执行获取迭代器对象
+let it=as('aaaa')
+// it.next()
+//实参作为第一个one的参数
+
+console.log('next',it.next('one'));
+console.log('next',it.next('two'));
+
+// 
+// function * objectEntries(obj){
+//     // 获取对象的所有key保存到数组[name,age]
+//  const propKeys= Object.keys(obj);
+//  for(const propKey of propKeys){
+//     yield [propKey,obj[propKey]]
+//  }
+// }
+// const obj={
+//     name:'nnn',
+//     age:19
+// }
+// obj[Symbol.iterator]=objectEntries
+// // console.log('obj',obj);
+// for (let [key,value] of objectEntries(obj)){
+//      console.log(`key:${key}====value:${value}`);
+// }
+function *main(){
+    let res=yield
+    request('https://free-api.heweather.net/es6')
+    console.log('res',res);
+    // 执行后面的操作
+    console.log('数据请求完成继续下面的操作');
+}
+const ite=main()
+function request(url){
+    $.ajax({
+        url,
+        method:'get',
+        success(res){
+            ite.next(res)
+        }
+    })
+}
+function *fun(){
+    loadUI()
+    yield fetchData()
+    finished()
+}
+let funs=fun()
+funs.next()
+function loadUI(load){
+   console.log('加载loading....');
+}
+function fetchData(){
+    setTimeout(()=>{
+        console.log('数据加载完成啦啦啦啦啦');
+        funs.next()
+    },3000)
+}
+function finished(){
+    console.log('数据加载完成,去除loading');
+}
+// async.....await:生成器函数+执行函数器
+// Promise
+
+</script>

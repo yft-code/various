@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+</body>
+</html>
+<script>
+    // 模板字符换还可以直接在里面定义函数（也可以调用函数）
+    let obj=`'objdddd'${function(){
+        return 'kkkk'
+    }()}`
+    console.log('obj',obj);
+//     alert`hello`
+// // 等同于
+// alert(['hello'])
+// alert('jjsjsjsj')
+let na='na'.repeat(0) // ""
+const {log}=console
+log('naxxx',na)
+function push(array, ...items) {
+  array.push(...items);
+}
+let arr=[]
+push(arr,1,2,3,4,5,6,7)
+console.log('arr',arr);
+
+let max=Math.max(...[14, 3, 77,8,10,29])
+console.log('max',max);
+const set = new Set([1, 2, 3, 4, 4]);
+log('set',[...set])
+</script>

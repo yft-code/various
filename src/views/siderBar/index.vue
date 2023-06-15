@@ -54,9 +54,14 @@ import variables from "@/assets/styles/variables.scss";
 export default {
   name: "SiderBar",
   components: { SidebarItem },
+  mounted(){
+    setTimeout(() => {
+      console.log('vvvvvv',this.routes);
+    }, 1000);
+  },
   computed: {
      routes() {
-      return this.$router.options.routes
+      return this.$router.options.routes[0].children
     },
     activeMenu() {
       const route = this.$route;

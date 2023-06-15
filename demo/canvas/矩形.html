@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="cx" width="900" height="900"> 
+
+    </canvas>
+</body>
+</html>
+<script>
+    let cx=document.getElementById('cx')
+    let ctx=cx.getContext('2d')
+    ctx.fillRect(0,0,190,90)
+    ctx.strokeRect(90,90,100,100)
+    ctx.clearRect(0,0,100,70)
+</script>

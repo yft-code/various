@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    let s=Symbol('s1')
+    let obj={
+        [s]:'yyyyy',
+        name:'44444'
+    }
+    // 以Symbol命名的对象的通过Object.keys获取不到
+    console.log('obj',obj[s]);
+    // 可以通过下面两种方法获取
+    console.log('oooo',Object.keys(obj));
+    // 获取Symbol声明的属性名
+    let m=Reflect.ownKeys(obj)
+    console.log('m',m);
+</script>

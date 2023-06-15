@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="cx" width="900" height="400"></canvas>
+    <video src="../../src/assets/movie.mp4"></video>
+    <button id="btn">播放</button>
+</body>
+</html>
+<script>
+    let cx=document.getElementById('cx')
+    let ctx=cx.getContext('2d')
+    var img=document.querySelector('video')
+    img.src='../../src/assets/movie.mp4'
+   let btn=document.querySelector('#btn')
+   btn.onclick=function (){
+    img.play()
+    ctx.drawImage(img,0,0,600,400)
+   }
+   let image=new Image()
+   image.src='./ljx.jpg'
+   image.onload=function(){
+      
+   }
+// 搞一个动画帧
+   function render(){
+    ctx.drawImage(img,0,0,600,400)
+    ctx.drawImage(image,0,0,100,350)
+    requestAnimationFrame(render)
+   }
+   render()
+</script>

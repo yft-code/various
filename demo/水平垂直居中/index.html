@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="parent">
+        <div class="child">ddddd</div>
+    </div>
+</body>
+</html>
+<style>
+    /* way1 */
+    .parent{
+        height: 100vh;
+        width: 400px;
+        background: yellow;
+        display: flex;
+    }
+    .child{
+        width: 300px;
+        height: 300px;
+        background: #000;
+        margin: auto;
+    }
+    /* way2 :不知道子元素的宽和高*/
+    .parent{
+        height: 100vh;
+        width: 400px;
+        background: yellow;
+        display: flex;
+        position: relative;
+    }
+    .child{
+        position:absolute;
+        width: 300px;
+        height: 300px;
+        top:50%;
+        left:50%;
+        background: #000;
+        transform:translate(-50%,-50%);
+    }
+        /* way3：知道子元素的宽和高 */
+        .parent{
+        height: 100vh;
+        width: 400px;
+        background: yellow;
+        display: flex;
+        position: relative;
+    }
+    .child{
+        position:absolute;
+        width: 300px;
+        height: 500px;
+        top:50%;
+        left:50%;
+        background: #000;
+        margin: -250px 0 0 -150px;
+    }
+</style>

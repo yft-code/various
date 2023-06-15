@@ -1,16 +1,25 @@
 <template>
-  <div class="container">
-      <div>浏览器的工作原理</div>
-      <div>url从输入的完整过程</div>
+  <div>
+ <video width="320" height="240" controls>
+  <source src="../../assets/movie.mp4" type="video/mp4">
+  您的浏览器不支持 HTML5 video 标签。
+</video>
+    {{
+        `${math}dddd`
+    }}
   </div>
 </template>
+
 <script>
 export default {
-
+   data(){
+    return{
+        math:'wwwwww'
+    }
+   }
 }
 </script>
+
 <style>
-.container{
-    padding:20px;
-}
+
 </style>

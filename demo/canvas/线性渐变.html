@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="myCanvas" width="800" height="1000"></canvas>
+
+    <script type="text/javascript">
+        var canvas=document.getElementById("myCanvas");
+        let index=0
+        var ctx=canvas.getContext("2d"); 
+         function render(){
+        //   ctx.clearRect(0,0,600,400) 
+          index+=0.001
+          if(index>1){
+              index=0
+          }
+        //   createLinearGradient(x1,y1,x2,y3)
+          let grad=ctx.createLinearGradient(100,200,400,200); //创建一个渐变色线性对象,
+          grad.addColorStop(0,"red");     
+          grad.addColorStop(index,"yellow");             //定义渐变色颜色
+          grad.addColorStop(1,"blue");
+          ctx.fillStyle=grad;                         //设置fillStyle为当前的渐变对象
+          ctx.fillRect(100,200,400,200);    
+          requestAnimationFrame(render)  
+          }
+          requestAnimationFrame(render) 
+        // 以圆心向上发散  
+        
+ </script>
+ </body>
+
+ </html>

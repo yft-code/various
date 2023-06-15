@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        hfdsfhdsfdshfjdsfjgdsjfs
+    </div>
+</body>
+</html>
+<script>
+    let obj={}
+    let arr=[1,2,3,4,5,6,7,8]
+    console.log(arr.indexOf(-1)>-1);
+    function fn(){
+
+    }
+    console.log(typeof(new Array()));
+    console.log(typeof(fn));
+    //获取字符串的最后的一个长度
+    function getStrLength(str,flag){
+         return str.at(-1)
+    }
+    // let str=[1,2,3,4,5,6,7]
+    // let [a,...b]=[1,2,3,4,5,6]
+    // console.log('v',b);
+    console.log('南京sAt',getStrLength('hdhsdhsdg djshdjashdhas'," "));
+    function getCount(str,strings){
+        let strCopy=str
+         str=str.toLowerCase()
+         console.log('str',str);
+         strings=strings.replace(/\s*/g,"").toLowerCase()
+         let obj={}
+         for(let i=0;i<strings.length;i++){
+              let stri=strings[i]
+             if(obj[stri]){
+                obj[stri]++
+             }else{
+                obj[stri]=1
+             }
+         }
+         let num=0
+          if(obj[str]){
+            num=obj[str]
+          }
+         console.log('strings',obj,num,strings);
+         return  `${strCopy}出现的数量是${num}`
+    }
+    console.log(getCount(' ','dhasdghasd dhasdggjasdg dhasdghsadg 333333333'));
+    function strLength(str,strs){
+        str=str.toLowerCase()
+        strs=strs.toLowerCase().split('')
+        let arr=strs.filter(item=>item===str)
+        console.log('arr',arr);
+        console.log('dddd',strs.filter((item)=>item === str).length)
+    }
+     strLength('A','dsajdh AAA BBBBB')
+     const array = [10, 11, 3, 20, 5];
+
+const greaterThanTen = array.find(element => element > 10);
+
+console.log('find',greaterThanTen)//11
+let radom=parseInt(Math.random(),500)
+console.log('radom',radom);
+function getArr(arr,list){
+//    for(let i=0;i<=1000;i++){
+        
+//    }
+}
+
+'0'.padStart(10, '0123')
+let bu='abcg'.padEnd(8, '0')
+console.log('bu',bu);
+var lines = 'dsdsdsdsdsdsdsdsdsdsdsd'
+var strrr = lines +'00000000';
+     for(let i = 8; i < strrr.length; i += 8) {
+          console.log(strrr.substring(i - 8, i));
+     }
+     let data=0xAA
+     console.log(Number.parseInt(data, 16)); 
+      console.log(Number.parseInt(+data))
+    //   字符串倒叙
+    let str='I am a student'
+    let strArr=[]
+    for (let index = str.length; index>=0 ;index--) {
+          strArr.push(str[index])
+    }
+   console.log(str.split('').reverse().join('')); 
+    console.log('字符串逆序',strArr.join(''));
+    console.log('evalll',eval(new String('dsdasd')));
+
+
+    function about(n){
+        let arr=[]
+        for(let i=1;i<=n;i++){
+if(i%5===0||i.toString().indexOf(5)>-1){
+    arr.push(i)
+}
+        }
+        return  `这几个数字是${arr.join(',')},有${arr.length}个`
+    }
+    console.log('about',about(20));
+    function getZhizi(n){
+        let arr=[]
+        for(let i=1;i<=n;i++){
+           for(let k=1;k<=i;k++){
+            if(i%k===0){
+                arr.push(k)
+            }
+           }
+        }
+        console.log('arr',arr);
+    }
+    getZhizi(50)
+    function findOne(str,obj){
+           for (let index = 0; index < str.length; index++) {
+            const element = str[index];
+            if(obj[element ]){
+                obj[element ]++
+            }else{
+                obj[element ]=1
+           }
+    }
+      console.log('obj',obj);
+      let arr=[]
+     for (const key in obj) {
+        if (Object.hasOwnProperty.call(obj, key)) {
+           if (obj[key]===1){
+              arr.push(key)
+           }
+            // console.log('element',element);
+        }
+     }
+     if(arr.length>0){
+        return arr.join(',')
+     }else{
+        return -1
+     }
+}
+findOne('dshgdhadsghddd',{})
+console.log(findOne('daddddddskdsdsgdsdsdo',{}));
+function promise1(){
+    return new Promise(resolve=>{
+        setTimeout(()=>{
+            resolve()
+            console.log("promise1");
+        },1000)
+    })
+   }
+
+   function promise2(){
+    return new Promise(resolve=>{
+        setTimeout(()=>{
+            resolve();
+            console.log("promise2");
+        },2000)
+    })
+}
+
+function promise3(){
+    return new Promise((resolve,reject)=>{
+        reject(111);
+    })
+}
+promise3().then(res=>{
+    console.log('res',res);
+}).catch(res=>{
+    console.log('catch',res);
+})
+function a(){
+    let arr=[]
+for(var i=0;i<3;i++){
+arr.push(()=>i)
+}
+var as1=arr.map(item=>{
+    console.log('item',item);
+})
+console.log('as1',as1);
+}
+a()
+// Promise.all([promise1(),promise2(),promise3()]).then(()=>{
+//     console.log("promise.all执行完毕");
+//     console.timeEnd("test");
+// }).catch(()=>{
+//     console.log("promise.all执行失败");
+//     console.timeEnd("test");
+// })
+async function asyncTime(){
+   console.time("aysncTime");
+   try{
+       await promise1();
+       await promise2();
+       await promise3();
+       console.log("async 执行完毕");
+       console.timeEnd("aysncTime");
+   }catch (e) {
+       console.log("async 执行失败");
+       console.timeEnd("aysncTime");
+   }
+}
+asyncTime()
+a()
+
+</script>

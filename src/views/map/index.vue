@@ -12,13 +12,14 @@
 </template>
 
 <script>
-
 import AMapLoader from '@amap/amap-jsapi-loader';
+import axios from 'axios';
  const securityJsCode = 'e7115f2fe4d209cc8d7578148fc42feb'; // 您申请的安全密钥
     window._AMapSecurityConfig = {
      securityJsCode // 您申请的安全密钥
 };
 export default {
+
 data(){
   return{
     //此处不声明 map 对象，可以直接使用 this.map赋值或者采用非响应式的普通对象来存储。
@@ -27,7 +28,11 @@ data(){
 },
 mounted(){
   //DOM初始化完成进行地图初始化
-  this.initMap();
+  let url='/api/todos'
+  axios.get(url).then(res=>{
+       
+  })
+  // this.initMap();
 },
 methods:{
   initMap(){

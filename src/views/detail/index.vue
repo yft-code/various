@@ -1,11 +1,19 @@
 <template>
   <div>
     详情页
+{{`${math}'1111111'${function(){
+        return 'hello world'
+}()}`}}
   </div>
 </template>
 
 <script>
 export default {
+  data(){
+  return{
+    math:'hhhhh'
+  }
+  },
     // 组件内路由导航
 beforeRouteEnter(to, from,next) {
   console.log('to',to,from);

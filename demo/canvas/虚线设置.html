@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    线条设置:可以实现动态的道路样式
+    <canvas id="cx" width="400" height="900">
+
+    </canvas>
+</body>
+</html>
+<script>
+    let cx=document.getElementById('cx')
+    let ctx=cx.getContext('2d')
+    ctx.moveTo(290,150)
+    ctx.lineTo(300,200)
+    ctx.lineTo(310,150)
+    // 线条的宽度
+    ctx.lineWidth=1
+    // 线条端点的样式
+    ctx.lineCap='Square'
+    // 设置两个线段连接处的样式
+    ctx.lineJoin='round'
+    //对斜截面进行限制
+    // ctx.miterLimit=10
+    // 设置虚线  [线条长度，线段空白部分]
+    ctx.setLineDash([2,5])
+    // 偏移量
+    ctx.lineDashOffset=10
+    ctx.stroke()
+
+</script>
